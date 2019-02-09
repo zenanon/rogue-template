@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad393687eee54964ba91c307634b7d39, type: 3}
+  m_Name: BasicMove
+  m_EditorClassIdentifier: 
+  skillEffects:
+  - {fileID: 11400000, guid: f74ceee02b423334bb8a35c6c22f17c7, type: 2}
+  - {fileID: 11400000, guid: 69e8faaeff1e407458d0f4507d05509b, type: 2}
+  target: 2
+  range: 1
+  needsLineOfSight: 0
