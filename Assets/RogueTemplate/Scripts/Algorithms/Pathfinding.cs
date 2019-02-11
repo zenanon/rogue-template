@@ -8,6 +8,6 @@ namespace RogueTemplate
 	{
 		public delegate bool CanMoveDelegate(RLBaseTile from, RLBaseTile to);
 		public delegate float PathCostDelegate(RLBaseTile from, RLBaseTile to);
-		public abstract List<RLBaseTile> FindPath(RLBaseTile from, RLBaseTile to, DungeonFloor floor, CanMoveDelegate canMove, PathCostDelegate pathCost);
+		public abstract List<RLBaseTile> FindPath(RLBaseTile fromTile, RLBaseTile to, DungeonFloor floor, CanMoveDelegate canMove, PathCostDelegate pathCost);
 	}
 }

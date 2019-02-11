@@ -8,22 +8,16 @@ namespace RogueTemplate
 	public class DungeonGenerator : ScriptableObject
 	{
 		public GenerationLayer[] generators;
+		public RLTileType defaultTileType;
 		
-		public DungeonFloor CreateFloor(Dungeon dungeon)
+		public DungeonFloor CreateFloor(int width, int height, Dungeon dungeon)
 		{
-			DungeonFloor dungeonFloor = new DungeonFloor(100, 100);
+			DungeonFloor dungeonFloor = new DungeonFloor(width, height, defaultTileType);
 
 			List<DungeonRegion> dungeonRegions = new List<DungeonRegion>(dungeonFloor.Regions);
 			foreach (GenerationLayer layer in generators)
 			{
-				List<DungeonRegion> newRegions = new List<DungeonRegion>();
-				foreach (DungeonRegion region in dungeonRegions)
-				{
-					Debug.Log("Applying " + layer.name + " to region at " + region.Position.ToString() + " with size " + region.Size.ToString());
-					newRegions.AddRange(layer.ApplyToRegion(dungeon, dungeonFloor, region));
-				}
-				dungeonRegions.Clear();
-				dungeonRegions.AddRange(newRegions);
+				layer.Apply(dungeon, dungeonFloor);
 			}
 			
 			return dungeonFloor;

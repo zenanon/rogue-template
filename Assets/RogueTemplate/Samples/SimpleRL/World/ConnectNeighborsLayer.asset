@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec39f9b9311ed3439eb0e5add4ef5da, type: 3}
+  m_Name: ConnectNeighborsLayer
+  m_EditorClassIdentifier: 
+  hallwayFloor: {fileID: 11400000, guid: 1bf276a0299ee074ba0b2ead65759b90, type: 2}
+  hallwayWall: {fileID: 11400000, guid: 666aa29294d26984da9eb15c3dcedf0a, type: 2}

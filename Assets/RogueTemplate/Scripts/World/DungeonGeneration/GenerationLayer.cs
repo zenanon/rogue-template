@@ -6,6 +6,6 @@ namespace RogueTemplate
 {
 	public abstract class GenerationLayer : ScriptableObject
 	{
-		public abstract List<DungeonRegion> ApplyToRegion(Dungeon dungeon, DungeonFloor floor, DungeonRegion region);
+		public abstract void Apply(Dungeon dungeon, DungeonFloor floor);
 	}
 }

@@ -20,7 +20,6 @@ public class TestEnvironment : MonoBehaviour
 
 	public RLActorController ActorPrefab;
 	public RLSkill move;
-	private RLBaseTile[,] _tiles;
 	private SimpleActor _actor;
 
 	public DungeonGenerator DungeonGenerator;
@@ -30,17 +29,18 @@ public class TestEnvironment : MonoBehaviour
 	public RLEffectRenderer effectRenderer;
 
 	public bool CanMove;
-	
+	private DungeonFloor dungeonFloor;
+
 	// Use this for initialization
 	void Start ()
 	{
-		DungeonFloor floor = DungeonGenerator.CreateFloor(new Dungeon());
+		dungeonFloor = DungeonGenerator.CreateFloor(64, 64, new Dungeon());
 		RLBaseTile start = null;
-		foreach (RLBaseTile t in floor.Tiles)
+		foreach (RLBaseTile t in dungeonFloor.Tiles)
 		{
 			if (t != null)
 			{
-				if (start == null)
+				if (start == null && !t.GetTileType().BlocksMovement)
 				{
 					start = t;
 				}
@@ -70,10 +70,10 @@ public class TestEnvironment : MonoBehaviour
 		int y = _actor.GetTile().GetDisplayPosition().y;
 		if (Math.Abs(horiz) > tolerance)
 		{
-			targetTile = _tiles[(int) (x + Mathf.Sign(horiz)), y];
+			targetTile = dungeonFloor.Tiles[(int) (x + Mathf.Sign(horiz)), y];
 		} else if (Math.Abs(vert) > tolerance)
 		{
-			targetTile = _tiles[x, (int) (y + Mathf.Sign(vert))];
+			targetTile = dungeonFloor.Tiles[x, (int) (y + Mathf.Sign(vert))];
 		}
 
 		if (targetTile != null)

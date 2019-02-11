@@ -12,23 +12,22 @@ namespace RogueTemplate
 		public bool splitHorizontally = true;
 		public bool splitVertically = true;
 		
-		public override List<DungeonRegion> ApplyToRegion(Dungeon dungeon, DungeonFloor floor, DungeonRegion region)
+		public override void Apply(Dungeon dungeon, DungeonFloor floor)
 		{
-			List<DungeonRegion> subregions = new List<DungeonRegion>();
-			
-			List<DungeonRegion> toSplit = new List<DungeonRegion>(new[]{region});
+			List<DungeonRegion> toSplit = new List<DungeonRegion>(floor.Regions);
 			List<DungeonRegion> added = new List<DungeonRegion>();
+			floor.Regions.Clear();
 			while (toSplit.Count > 0)
 			{
 				foreach (DungeonRegion reg in toSplit)
 				{
-					if (!CanSplitVertically(reg) && !CanSplitHorizontally(reg))
+					if (CanSplitVertically(reg) || CanSplitHorizontally(reg))
 					{
-						subregions.Add(reg);
+						added.AddRange(Split(reg));
 					}
 					else
 					{
-						added.AddRange(Split(reg));
+						floor.Regions.Add(reg);
 					}
 				}
 				
@@ -36,8 +35,6 @@ namespace RogueTemplate
 				toSplit.AddRange(added);
 				added.Clear();
 			}
-			
-			return subregions;
 		}
 
 		private DungeonRegion[] Split(DungeonRegion region)
@@ -59,6 +56,16 @@ namespace RogueTemplate
 			DungeonRegion right = new DungeonRegion(new Vector2Int(region.Position.x + leftWidth, region.Position.y), 
 				new Vector2Int(region.Size.x - leftWidth, region.Size.y));
 			right.Tags.AddRange(region.Tags);
+			
+			left.Neighbors.Add(right);
+			right.Neighbors.Add(left);
+			foreach (DungeonRegion neighbor in region.Neighbors)
+			{
+				neighbor.Neighbors.Remove(region);
+				DungeonRegion newNeighbor = Random.Range(0f, 1f) < .5f ? left : right;
+				newNeighbor.Neighbors.Add(neighbor);
+				neighbor.Neighbors.Add(newNeighbor);
+			}
 			return new[] {left, right};
 		}
 		
@@ -71,6 +78,16 @@ namespace RogueTemplate
 			DungeonRegion top = new DungeonRegion(new Vector2Int(region.Position.x, region.Position.y + bottomHeight), 
 				new Vector2Int(region.Size.x, region.Size.y - bottomHeight));
 			top.Tags.AddRange(region.Tags);
+			
+			bottom.Neighbors.Add(top);
+			top.Neighbors.Add(bottom);
+			foreach (DungeonRegion neighbor in region.Neighbors)
+			{
+				neighbor.Neighbors.Remove(region);
+				DungeonRegion newNeighbor = Random.Range(0f, 1f) < .5f ? top : bottom;
+				newNeighbor.Neighbors.Add(neighbor);
+				neighbor.Neighbors.Add(newNeighbor);
+			}
 			return new[] {bottom, top};
 		}
 
