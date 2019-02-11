@@ -6,14 +6,14 @@ namespace RogueTemplate
 {
 	public class RLSimpleTile : RLBaseTile
 	{
-		public Vector3Int Position { get; private set; }
+		private Vector3Int Position { get; set; }
 
-		public int DisplayType
+		private int DisplayType
 		{
 			get { return TileType.DisplayType; }
 		}
 
-		public RLTileType TileType { get; private set; }
+		private RLTileType TileType { get; set; }
 
 		private RLBaseActor Actor { get; set; }
 
@@ -40,6 +40,10 @@ namespace RogueTemplate
 
 		public override void SetActor(RLBaseActor actor)
 		{
+			if (actor == Actor)
+			{
+				return;
+			}
 			Actor = actor;
 			if (Actor != null)
 			{

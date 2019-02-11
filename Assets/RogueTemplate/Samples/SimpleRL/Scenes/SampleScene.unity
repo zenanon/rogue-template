@@ -582,6 +582,7 @@ MonoBehaviour:
   failOnNotFound: 0
   effects:
   - {fileID: 11400000, guid: ba66e77e1bcb3644f9046d7c2cf6c039, type: 2}
+  - {fileID: 11400000, guid: c1645d7e5408fbb45b55fa2b0e9dd54d, type: 2}
 --- !u!4 &1975831212
 Transform:
   m_ObjectHideFlags: 0
@@ -654,6 +655,7 @@ MonoBehaviour:
   ActorPrefab: {fileID: 114966242230819092, guid: 4987a83617fb0d64fb38e3bb037dea19,
     type: 2}
   move: {fileID: 11400000, guid: 6cddc9df27aaea8489124ad4ef7b2387, type: 2}
+  DungeonGenerator: {fileID: 11400000, guid: 1452ac2b2e1936440bfccbc50f43e758, type: 2}
   virtualCam: {fileID: 1315925032}
   effectRenderer: {fileID: 1975831211}
   CanMove: 1

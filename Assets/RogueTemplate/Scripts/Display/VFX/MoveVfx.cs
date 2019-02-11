@@ -10,11 +10,6 @@ namespace RogueTemplate
 	[CreateAssetMenu(fileName = "MoveVfx", menuName = "RogueTemplate/VFX/MoveVfx")]
 	public class MoveVfx : RLVisualEffect
 	{
-		public override string GetEffectName()
-		{
-			return "move";
-		}
-
 		public override void ShowEffect(VisualEffectParams effectParams, Action onComplete)
 		{
 			Vector3 targetPosition = effectParams.FirstTarget.GetDisplayPosition();

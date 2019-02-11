@@ -4,7 +4,14 @@ using System.Collections.Generic;
 using Cinemachine;
 using RogueTemplate;
 using UnityEngine;
+using UnityEngine.WSA;
 
+/**
+ * This class only exists as a temporary way to set up a test environment for the framework until all the necessary
+ * components are in place to generate things the 'right way'.
+ *
+ * TODO: Remove this class when dungeon generation, actor population, and input are available.
+ */
 public class TestEnvironment : MonoBehaviour
 {
 	public RLTileRenderer TileRenderer;
@@ -16,6 +23,8 @@ public class TestEnvironment : MonoBehaviour
 	private RLBaseTile[,] _tiles;
 	private SimpleActor _actor;
 
+	public DungeonGenerator DungeonGenerator;
+	
 	public CinemachineVirtualCamera virtualCam;
 	
 	public RLEffectRenderer effectRenderer;
@@ -23,19 +32,23 @@ public class TestEnvironment : MonoBehaviour
 	public bool CanMove;
 	
 	// Use this for initialization
-	void Start () {
-		_tiles = new RLBaseTile[10,10];
-		for (int x = 0; x < 10; x++)
+	void Start ()
+	{
+		DungeonFloor floor = DungeonGenerator.CreateFloor(new Dungeon());
+		RLBaseTile start = null;
+		foreach (RLBaseTile t in floor.Tiles)
 		{
-			for (int y = 0; y < 10; y++)
+			if (t != null)
 			{
-				_tiles[x,y] = new RLSimpleTile(new Vector3Int(x, y, 0), x == 0 || x == 9 || y == 0 || y == 9 ? wall : floor);
-				TileRenderer.BindTile(_tiles[x,y]);
+				if (start == null)
+				{
+					start = t;
+				}
+				TileRenderer.BindTile(t);
 			}
 		}
-
 		_actor = new SimpleActor {BasicMoveSkill = move};
-		_tiles[5, 5].SetActor(_actor);
+		start.SetActor(_actor);
 		RLActorController actorController = Instantiate(ActorPrefab, transform);
 		actorController.effectRenderer = effectRenderer;
 		actorController.BindActor(_actor);

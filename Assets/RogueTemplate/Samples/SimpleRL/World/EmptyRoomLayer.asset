@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4be44e8f06a334c933d3c69750ca7c, type: 3}
-  m_Name: BasicMoveVFX
+  m_Script: {fileID: 11500000, guid: d1d12992ae8a8aa498ce17ae238c3bcf, type: 3}
+  m_Name: EmptyRoomLayer
   m_EditorClassIdentifier: 
-  duration: 0.25
-  effectName: move
+  wallType: {fileID: 11400000, guid: 666aa29294d26984da9eb15c3dcedf0a, type: 2}
+  floorType: {fileID: 11400000, guid: 1bf276a0299ee074ba0b2ead65759b90, type: 2}

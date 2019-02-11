@@ -8,8 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4be44e8f06a334c933d3c69750ca7c, type: 3}
-  m_Name: BasicMoveVFX
+  m_Script: {fileID: 11500000, guid: dc2bc888e76813743b5583485694d81a, type: 3}
+  m_Name: BSPLayer
   m_EditorClassIdentifier: 
-  duration: 0.25
-  effectName: move
+  minDimensions: {x: 20, y: 20}
+  splitVariance: 6
+  splitHorizontally: 1
+  splitVertically: 1

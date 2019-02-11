@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8983dea8b3a8b64babf5e1e7a4c9bee, type: 3}
+  m_Name: BSPDungeonGenerator
+  m_EditorClassIdentifier: 
+  generators:
+  - {fileID: 11400000, guid: c12c479532aabdf40b76d8f050e7d3ba, type: 2}
+  - {fileID: 11400000, guid: f484ed6e2c1acb647b70ead72aa82551, type: 2}
+  - {fileID: 11400000, guid: d434d3a326286c9499f40954a5ccae7e, type: 2}

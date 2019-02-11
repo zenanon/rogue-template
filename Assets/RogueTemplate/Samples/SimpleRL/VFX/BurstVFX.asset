@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4be44e8f06a334c933d3c69750ca7c, type: 3}
-  m_Name: BasicMoveVFX
+  m_Script: {fileID: 11500000, guid: 85c37ceaf8a69a14ab05db7237cf0897, type: 3}
+  m_Name: BurstVFX
   m_EditorClassIdentifier: 
-  duration: 0.25
-  effectName: move
+  duration: 0.5
+  effectName: burst
+  prefab: {fileID: 114378569096906042, guid: 2e02c740599eee34bbec5ad3e3c47150, type: 2}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4457435223233690}
   - component: {fileID: 212128455110781548}
   m_Layer: 0
-  m_Name: at
+  m_Name: ActorSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4531326241761756}
   - component: {fileID: 114966242230819092}
   m_Layer: 0
-  m_Name: PlayerActorController
+  m_Name: ActorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

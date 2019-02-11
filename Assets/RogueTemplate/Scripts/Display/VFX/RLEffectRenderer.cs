@@ -18,7 +18,7 @@ namespace RogueTemplate
 			_effectsDict = new Dictionary<string, RLVisualEffect>(effects.Length);
 			foreach (RLVisualEffect effect in effects)
 			{
-				_effectsDict[effect.GetEffectName()] = effect;
+				_effectsDict[effect.effectName] = effect;
 			}
 		}
 

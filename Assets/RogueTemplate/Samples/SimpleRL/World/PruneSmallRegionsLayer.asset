@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4be44e8f06a334c933d3c69750ca7c, type: 3}
-  m_Name: BasicMoveVFX
+  m_Script: {fileID: 11500000, guid: fde8cab71aa96e84298e56ec3c48da76, type: 3}
+  m_Name: PruneSmallRegionsLayer
   m_EditorClassIdentifier: 
-  duration: 0.25
-  effectName: move
+  minWidth: 9
+  minHeight: 9

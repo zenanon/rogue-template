@@ -8,7 +8,7 @@ namespace RogueTemplate
 	public abstract class RLVisualEffect : ScriptableObject
 	{
 		public float duration;
-		public abstract string GetEffectName();
+		public string effectName;
 		public abstract void ShowEffect(VisualEffectParams effectParams, Action onComplete);
 
 		public class VisualEffectParams
