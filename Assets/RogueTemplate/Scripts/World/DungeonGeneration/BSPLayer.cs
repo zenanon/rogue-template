@@ -49,7 +49,7 @@ namespace RogueTemplate
 
 		private DungeonRegion[] SplitHorizontally(DungeonRegion region)
 		{
-			int leftWidth = region.Size.x / 2 + Random.Range(-splitVariance, splitVariance + 1);
+			int leftWidth = Mathf.Max(1, region.Size.x / 2 + Random.Range(-splitVariance, splitVariance + 1));
 			DungeonRegion left = new DungeonRegion(new Vector2Int(region.Position.x, region.Position.y), 
 				new Vector2Int(leftWidth, region.Size.y));
 			left.Tags.AddRange(region.Tags);
@@ -71,7 +71,7 @@ namespace RogueTemplate
 		
 		private DungeonRegion[] SplitVertically(DungeonRegion region)
 		{
-			int bottomHeight = region.Size.y / 2 + Random.Range(-splitVariance, splitVariance + 1);
+			int bottomHeight = Mathf.Max(1,region.Size.y / 2 + Random.Range(-splitVariance, splitVariance + 1));
 			DungeonRegion bottom = new DungeonRegion(new Vector2Int(region.Position.x, region.Position.y), 
 				new Vector2Int(region.Size.x, bottomHeight));
 			bottom.Tags.AddRange(region.Tags);
