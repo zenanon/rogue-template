@@ -17,10 +17,15 @@ namespace RogueTemplate
 
 		private RLBaseActor Actor { get; set; }
 
-		public RLSimpleTile(Vector3Int position, RLTileType type)
+		private bool currentlyVisible;
+		private bool everSeen;
+		
+
+		public RLSimpleTile(Vector3Int position, RLTileType type, DungeonFloor floor)
 		{
 			Position = position;
 			TileType = type;
+			Floor = floor;
 		}
 		
 		public override Vector3Int GetDisplayPosition()
@@ -59,6 +64,43 @@ namespace RogueTemplate
 		public override RLTileType GetTileType()
 		{
 			return TileType;
+		}
+
+		public override void SetTileType(RLTileType type)
+		{
+			TileType = type;
+			if (TileDisplayRefresh != null)
+			{
+				TileDisplayRefresh(this);
+			}
+		}
+
+		public override void SetCurrentlyVisibleToPlayer(bool visible)
+		{
+			currentlyVisible = visible;
+			if (TileDisplayRefresh != null)
+			{
+				TileDisplayRefresh(this);
+			}
+		}
+
+		public override void SetEverSeenByPlayer(bool visible)
+		{
+			everSeen = visible;
+			if (TileDisplayRefresh != null)
+			{
+				TileDisplayRefresh(this);
+			}
+		}
+
+		public override bool IsCurrentlyVisibleToPlayer()
+		{
+			return currentlyVisible;
+		}
+
+		public override bool HasEverBeenSeenByPlayer()
+		{
+			return everSeen;
 		}
 	}
 }

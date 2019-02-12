@@ -9,6 +9,9 @@ namespace RogueTemplate
 	{
 
 		public Tilemap environmentTilemap;
+		public Tilemap memoryFogTilemap;
+		public Tilemap fogOfWarTilemap;
+		
 		public RLTileset tileset;
 
 		private void Awake()
@@ -24,6 +27,8 @@ namespace RogueTemplate
 		private void DisplayTile(RLBaseTile tile)
 		{
 			environmentTilemap.SetTile(tile.GetDisplayPosition(), tileset[tile.GetDisplayType()]);
+			memoryFogTilemap.SetTile(tile.GetDisplayPosition(), tile.IsCurrentlyVisibleToPlayer() ? null : tileset.memoryFogTile);
+			fogOfWarTilemap.SetTile(tile.GetDisplayPosition(), tile.HasEverBeenSeenByPlayer() ? null : tileset.fogOfWarTile);
 		}
 	}
 }

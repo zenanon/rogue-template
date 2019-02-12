@@ -52,8 +52,7 @@ namespace RogueTemplate
 							{
 								if (tile.GetTileType().BlocksMovement)
 								{
-									floor.Tiles[tile.GetDisplayPosition().x, tile.GetDisplayPosition().y] =
-										new RLSimpleTile(tile.GetDisplayPosition(), hallwayFloor);
+									floor.Tiles[tile.GetDisplayPosition().x, tile.GetDisplayPosition().y].SetTileType(hallwayFloor);
 								}
 							}
 						}

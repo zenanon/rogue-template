@@ -25,10 +25,18 @@ namespace RogueTemplate
 			}
 		}
 
+		public DungeonFloor Floor { get; set; }
+
 		public abstract Vector3Int GetDisplayPosition();
 		public abstract int GetDisplayType();
 		public abstract RLBaseActor GetActor();
 		public abstract void SetActor(RLBaseActor actor);
 		public abstract RLTileType GetTileType();
+		public abstract void SetTileType(RLTileType type);
+
+		public abstract void SetCurrentlyVisibleToPlayer(bool visible);
+		public abstract void SetEverSeenByPlayer(bool visible);
+		public abstract bool IsCurrentlyVisibleToPlayer();
+		public abstract bool HasEverBeenSeenByPlayer();
 	}
 }

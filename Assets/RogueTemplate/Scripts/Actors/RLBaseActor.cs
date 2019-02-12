@@ -27,6 +27,12 @@ namespace RogueTemplate
 			}
 		}
 
+		public delegate void OnVisibilityChangedDelegate(RLBaseTile tile, bool visible);
+		public OnVisibilityChangedDelegate OnVisibilityChanged { get; set; }
+		
+		public FieldOfView fieldOfView { get; set; }
+		public List<RLBaseTile> visibleTiles { get; protected set; }
+		
 		public RLSkill BasicMoveSkill { get; set; }
 
 		public abstract RLBaseTile GetTile();
@@ -55,6 +61,37 @@ namespace RogueTemplate
 			if (BasicMoveSkill != null && BasicMoveSkill.IsTargetValid(this, tile))
 			{
 				DoSkill(BasicMoveSkill, tile);
+			}
+		}
+
+		public abstract int GetVisionRange();
+
+		public virtual void UpdateVision()
+		{
+			if (fieldOfView == null)
+			{
+				return;
+			}
+			List<RLBaseTile> previousVisibility = new List<RLBaseTile>(visibleTiles);
+			visibleTiles = fieldOfView.GetVisibleTilesForActor(this);
+			List<RLBaseTile> newVisibility = new List<RLBaseTile>(visibleTiles);
+			newVisibility.RemoveAll(tile => previousVisibility.Contains(tile));
+			previousVisibility.RemoveAll(tile => visibleTiles.Contains(tile));
+
+			foreach (RLBaseTile tile in previousVisibility)
+			{
+				if (OnVisibilityChanged != null)
+				{
+					OnVisibilityChanged(tile, false);
+				}
+			}
+			
+			foreach (RLBaseTile tile in newVisibility)
+			{
+				if (OnVisibilityChanged != null)
+				{
+					OnVisibilityChanged(tile, true);
+				}
 			}
 		}
 	}

@@ -20,7 +20,7 @@ namespace RogueTemplate
 			DungeonRegion mainRegion = new DungeonRegion(new Vector2Int(0, 0), new Vector2Int(width, height));
 			Regions = new List<DungeonRegion> {mainRegion};
 			Tiles = new RLBaseTile[width, height];
-			ForTilesInRegion(mainRegion, (x, y, tile) => new RLSimpleTile(new Vector3Int(x, y, 0), defaultType));
+			ForTilesInRegion(mainRegion, (x, y, tile) => new RLSimpleTile(new Vector3Int(x, y, 0), defaultType, this));
 		}
 
 		public void ForTilesInRegion(DungeonRegion region, TileDecoratorDelegate tileDecoratorDelegate)
@@ -40,6 +40,16 @@ namespace RogueTemplate
 				{Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left};
 
 			return GetNeighborTiles(tile, neighborDirections);
+		}
+
+		public RLBaseTile GetTileAt(int x, int y)
+		{
+			if (x < 0 || x >= Tiles.GetLength(0) || y < 0 || y >= Tiles.GetLength(1))
+			{
+				return null;
+			}
+
+			return Tiles[x, y];
 		}
 
 		public List<RLBaseTile> GetAllNeighborTiles(RLBaseTile tile)

@@ -17,3 +17,5 @@ MonoBehaviour:
   - displayTile: {fileID: 11400000, guid: 857996822350d734180f824fddafa66e, type: 2}
     type: {fileID: 11400000, guid: 666aa29294d26984da9eb15c3dcedf0a, type: 2}
   tileNotFound: {fileID: 11400000, guid: 5c83ec2cfc116dd48aa91949f1337ddb, type: 2}
+  fogOfWarTile: {fileID: 11400000, guid: 5c83ec2cfc116dd48aa91949f1337ddb, type: 2}
+  memoryFogTile: {fileID: 11400000, guid: 5c83ec2cfc116dd48aa91949f1337ddb, type: 2}

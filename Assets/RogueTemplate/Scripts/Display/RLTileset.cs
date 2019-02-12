@@ -11,6 +11,9 @@ namespace RogueTemplate
 	{
 		public TileEntry[] tiles;
 		public TileBase tileNotFound;
+
+		public TileBase fogOfWarTile;
+		public TileBase memoryFogTile;
 		
 		private Dictionary<int, TileBase> _tilesDict;
 

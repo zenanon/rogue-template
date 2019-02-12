@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde8cab71aa96e84298e56ec3c48da76, type: 3}
   m_Name: PruneSmallRegionsLayer
   m_EditorClassIdentifier: 
-  minWidth: 9
-  minHeight: 9
+  minWidth: 2
+  minHeight: 2

@@ -23,11 +23,11 @@ namespace RogueTemplate
 					                           || y == region.Position.y ||
 					                           y == region.Position.y + region.Size.y - 1)
 					{
-						tile = new RLSimpleTile(new Vector3Int(x, y, 0), wallType);
+						tile.SetTileType(wallType);
 					}
 					else
 					{
-						tile = new RLSimpleTile(new Vector3Int(x, y, 0), floorType);
+						tile.SetTileType(floorType);
 					}
 
 					return tile;

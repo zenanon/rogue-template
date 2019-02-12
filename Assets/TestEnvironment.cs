@@ -47,7 +47,21 @@ public class TestEnvironment : MonoBehaviour
 				TileRenderer.BindTile(t);
 			}
 		}
-		_actor = new SimpleActor {BasicMoveSkill = move};
+		_actor = new SimpleActor {
+			BasicMoveSkill = move,
+			fieldOfView = new BresenhamFOV(),
+			OnVisibilityChanged = (tile, visible) =>
+			{
+				if (visible)
+				{
+					tile.SetCurrentlyVisibleToPlayer(true);
+					tile.SetEverSeenByPlayer(true);
+				}
+				else
+				{
+					tile.SetCurrentlyVisibleToPlayer(false);
+				}
+			}};
 		start.SetActor(_actor);
 		RLActorController actorController = Instantiate(ActorPrefab, transform);
 		actorController.effectRenderer = effectRenderer;

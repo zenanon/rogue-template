@@ -9,6 +9,11 @@ namespace RogueTemplate
 		private RLBaseTile tile;
 		private int teamId;
 		private List<RLSkill> skills;
+
+		public SimpleActor()
+		{
+			visibleTiles = new List<RLBaseTile>();
+		}
 		
 		public override RLBaseTile GetTile()
 		{
@@ -22,6 +27,7 @@ namespace RogueTemplate
 			{
 				OnPositionChanged();
 			}
+			UpdateVision();
 		}
 
 		public override int GetTeamId()
@@ -32,6 +38,12 @@ namespace RogueTemplate
 		public override List<RLSkill> GetSkills()
 		{
 			return skills;
+		}
+
+		public override int GetVisionRange()
+		{
+			// TODO: use a stat for this.
+			return 10;
 		}
 	}
 }
