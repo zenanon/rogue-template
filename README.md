@@ -10,14 +10,14 @@ Currently the project is in a pre-alpha state and undergoing active development,
 * A skill system where skills/spells can be defined as a simple list of visuals and gameplay effects.
 * Base class for actors (player, creatures) in the game.
 * A demo scene in which a character sprite moves around a simple room.
+* A simple dungeon generation framework.
+* Implementations of some common algorithms for FOV/pathfinding/line drawing.
+* Clean separation between game data and rendering/visuals - where possible the game data will be entirely agnostic to how the game is being displayed, so you should be able to write your own rendering logic if you want to make the game 3D or ASCII-based instead of using 2D sprites, for example.
 
 # What are the planned features?
 * Basic character/monster actions - moving, attacking, picking up items.
 * A simple targeting controller to handle picking skill targets.
 * Basic UI for things like player stats, inventory, equipment, etc.
-* Clean separation between game data and rendering/visuals - where possible the game data will be entirely agnostic to how the game is being displayed, so you should be able to write your own rendering logic if you want to make the game 3D or ASCII-based instead of using 2D sprites, for example.
-* A simple dungeon generation framework with some common dungeon algorithms.
-* Implementations of common algorithms - field of view, pathfinding, etc., with the ability to add your own alternatives where possible.
 * Save/Load functionality for the included types with support for adding more.
 
 # What are NOT planned features?
