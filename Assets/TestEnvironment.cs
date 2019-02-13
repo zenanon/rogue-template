@@ -22,11 +22,15 @@ public class TestEnvironment : MonoBehaviour
 	public RLSkill move;
 	private SimpleActor _actor;
 
+	public StatBlockDisplay StatBlockDisplay;
+
 	public DungeonGenerator DungeonGenerator;
 	
 	public CinemachineVirtualCamera virtualCam;
 	
 	public RLEffectRenderer effectRenderer;
+
+	public StatBlock baseStats;
 
 	public bool CanMove;
 	private DungeonFloor dungeonFloor;
@@ -47,7 +51,7 @@ public class TestEnvironment : MonoBehaviour
 				TileRenderer.BindTile(t);
 			}
 		}
-		_actor = new SimpleActor {
+		_actor = new SimpleActor(baseStats) {
 			BasicMoveSkill = move,
 			fieldOfView = new BresenhamFOV(),
 			OnVisibilityChanged = (tile, visible) =>
@@ -62,6 +66,7 @@ public class TestEnvironment : MonoBehaviour
 					tile.SetCurrentlyVisibleToPlayer(false);
 				}
 			}};
+		StatBlockDisplay.BindStatBlock(_actor.GetStats());
 		start.SetActor(_actor);
 		RLActorController actorController = Instantiate(ActorPrefab, transform);
 		actorController.effectRenderer = effectRenderer;

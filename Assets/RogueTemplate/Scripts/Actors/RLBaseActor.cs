@@ -94,5 +94,7 @@ namespace RogueTemplate
 				}
 			}
 		}
+
+		public abstract StatBlock GetStats();
 	}
 }
