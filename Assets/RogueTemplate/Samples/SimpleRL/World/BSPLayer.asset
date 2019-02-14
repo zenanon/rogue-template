@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: BSPLayer
   m_EditorClassIdentifier: 
   minDimensions: {x: 10, y: 10}
-  splitVariance: 6
+  splitVariance: 2
   splitHorizontally: 1
   splitVertically: 1

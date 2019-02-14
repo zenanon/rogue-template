@@ -14,7 +14,7 @@ namespace RogueTemplate
 		
 		public Stat[] Stats;
 		private readonly Dictionary<string, Stat> _statsDict = new Dictionary<string, Stat>();
-		private readonly List<StatBlock> _modifiers = new List<StatBlock>();
+		private readonly List<StatMod> _modifiers = new List<StatMod>();
 
 		private void Awake()
 		{
@@ -35,12 +35,18 @@ namespace RogueTemplate
 		public int GetTotalModifers(string statName)
 		{
 			int mods = 0;
-			foreach (StatBlock mod in _modifiers)
+			float percent = 0f;
+			
+			foreach (StatMod mod in _modifiers)
 			{
-				mods += mod.GetStatValue(statName);
+				if (mod.statName.Equals(statName))
+				{
+					mods += mod.flatAmount;
+					percent += mod.percentAmount;
+				}
 			}
-
-			return mods;
+			
+			return (int) (GetBaseStatValue(statName) * percent + mods);
 		}
 
 		public int GetStatValue(string statName)
@@ -48,13 +54,13 @@ namespace RogueTemplate
 			return GetBaseStatValue(statName) + GetTotalModifers(statName);
 		}
 
-		public void AddModifier(StatBlock mod)
+		public void AddModifier(StatMod mod)
 		{
 			_modifiers.Add(mod);
 			NotifyStatChange();
 		}
 
-		public void RemoveModifier(StatBlock mod)
+		public void RemoveModifier(StatMod mod)
 		{
 			_modifiers.Remove(mod);
 			NotifyStatChange();

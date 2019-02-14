@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace RogueTemplate
 {
-	public abstract class RLItemBehaviour
+	public abstract class RLItemBehaviour : ScriptableObject
 	{
-		public string Name { get; protected set; }
-		public bool ShowsInItemMenu { get; protected set; }
-		public int OrderInMenu { get; protected set; }
+		public string behaviourName;
 
+		public virtual string GetBehaviourName()
+		{
+			return behaviourName;
+		}
 		public abstract bool CanUse(RLBaseActor user);
+		public abstract bool ShowBehaviour(RLBaseActor user);
 		public abstract void OnUse(RLBaseActor user);
 	}
 }
