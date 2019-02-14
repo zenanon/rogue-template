@@ -19,6 +19,7 @@ Currently the project is in a pre-alpha state and undergoing active development,
 * A simple targeting controller to handle picking skill targets.
 * Basic UI for things like player stats, inventory, equipment, etc.
 * Save/Load functionality for the included types with support for adding more.
+* Unity editor features to ease content creation.
 
 # What are NOT planned features?
 * A fully playable game - the included sample will only serve to demo features of the library.
