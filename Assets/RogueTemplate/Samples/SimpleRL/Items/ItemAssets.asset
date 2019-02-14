@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaed0e97b5b8c2b4f860e652dd1515b1, type: 3}
+  m_Name: ItemAssets
+  m_EditorClassIdentifier: 
+  assets:
+  - itemSprite: {fileID: 21300000, guid: b458652b887eabf46a526f4d32102229, type: 3}
+    displayName: sword
+  - itemSprite: {fileID: 21300000, guid: f194de5a12c67084e9aa3320915b1209, type: 3}
+    displayName: dagger
+  - itemSprite: {fileID: 21300000, guid: 1b90eba7b05b71846b4e3f7900d4504a, type: 3}
+    displayName: axe
+  - itemSprite: {fileID: 21300000, guid: bed10562ffd5dc840a283bdc3b5c9a10, type: 3}
+    displayName: staff
+  - itemSprite: {fileID: 21300000, guid: 2899c7664035e014fbfbdcc970a625f6, type: 3}
+    displayName: helmet
+  - itemSprite: {fileID: 21300000, guid: b61b820873b53ab4399cd9d3f2b82f0b, type: 3}
+    displayName: armor
+  - itemSprite: {fileID: 21300000, guid: 0452fa3d78cbef841806793afe3099fe, type: 3}
+    displayName: shield
+  itemNotFoundSprite: {fileID: 21300000, guid: 944ddc026451b8a4c9b9b137b27b7fac, type: 3}

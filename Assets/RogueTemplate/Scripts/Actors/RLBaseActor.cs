@@ -11,6 +11,10 @@ namespace RogueTemplate
 
 		public delegate void OnPositionChangedDelegate();
 
+		public delegate void OnInventoryChangedDelegate();
+		
+		public OnInventoryChangedDelegate OnInventoryChanged { get; set; }
+
 		public ShowEffectsDelegate ShowEffects { get; set; }
 
 		private OnPositionChangedDelegate _onPositionChanged;
@@ -96,5 +100,7 @@ namespace RogueTemplate
 		}
 
 		public abstract StatBlock GetStats();
+
+		public abstract IEnumerable<RLBaseItem> GetInventory();
 	}
 }

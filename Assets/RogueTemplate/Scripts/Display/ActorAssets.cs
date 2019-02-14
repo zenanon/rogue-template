@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDisplay : MonoBehaviour {
+public class ActorAssets : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

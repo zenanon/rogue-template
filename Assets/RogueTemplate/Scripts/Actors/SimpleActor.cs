@@ -10,11 +10,13 @@ namespace RogueTemplate
 		private int _teamId;
 		private List<RLSkill> _skills;
 		private StatBlock _stats;
+		private List<RLBaseItem> _inventory;
 		
 		public SimpleActor(StatBlock stats)
 		{
 			visibleTiles = new List<RLBaseTile>();
 			_stats = Object.Instantiate(stats);
+			_inventory = new List<RLBaseItem>();
 		}
 		
 		public override RLBaseTile GetTile()
@@ -51,6 +53,20 @@ namespace RogueTemplate
 		public override StatBlock GetStats()
 		{
 			return _stats;
+		}
+
+		public override IEnumerable<RLBaseItem> GetInventory()
+		{
+			return _inventory;
+		}
+
+		public void AddItem(RLBaseItem item)
+		{
+			_inventory.Add(item);
+			if (OnInventoryChanged != null)
+			{
+				OnInventoryChanged();
+			}
 		}
 	}
 }

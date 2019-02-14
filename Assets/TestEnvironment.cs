@@ -5,6 +5,7 @@ using Cinemachine;
 using RogueTemplate;
 using UnityEngine;
 using UnityEngine.WSA;
+using Random = UnityEngine.Random;
 
 /**
  * This class only exists as a temporary way to set up a test environment for the framework until all the necessary
@@ -30,6 +31,9 @@ public class TestEnvironment : MonoBehaviour
 	
 	public RLEffectRenderer effectRenderer;
 
+	public InventoryDisplay InventoryDisplay;
+	public RLBaseItem[] testItems;
+	
 	public StatBlock baseStats;
 
 	public bool CanMove;
@@ -71,11 +75,22 @@ public class TestEnvironment : MonoBehaviour
 		RLActorController actorController = Instantiate(ActorPrefab, transform);
 		actorController.effectRenderer = effectRenderer;
 		actorController.BindActor(_actor);
+		InventoryDisplay.BindInventory(_actor);
 		virtualCam.Follow = actorController.transform;
 	}
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.I))
+		{
+			InventoryDisplay.gameObject.SetActive(!InventoryDisplay.gameObject.activeSelf);
+		}
+
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			_actor.AddItem(testItems[Random.Range(0, testItems.Length)]);
+		}
+		
 		if (!CanMove)
 		{
 			return;
