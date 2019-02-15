@@ -9,8 +9,8 @@ Currently the project is in a pre-alpha state and undergoing active development,
 **Please note that at this point much of the design/implementation is subject to change**
 * A skill system where skills/spells can be defined as a simple list of visuals and gameplay effects.
 * Base class for actors (player, creatures) in the game.
-* A demo scene in which a character sprite moves around a simple room.
-* A simple dungeon generation framework.
+* A demo scene in which a character sprite moves around a simple dungeon.
+* A simple dungeon generation framework - more algorithms to be added.
 * Implementations of some common algorithms for FOV/pathfinding/line drawing.
 * Clean separation between game data and rendering/visuals - where possible the game data will be entirely agnostic to how the game is being displayed, so you should be able to write your own rendering logic if you want to make the game 3D or ASCII-based instead of using 2D sprites, for example.
 
