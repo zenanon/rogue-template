@@ -15,7 +15,7 @@ namespace RogueTemplate
 		public SimpleActor(StatBlock stats)
 		{
 			visibleTiles = new List<RLBaseTile>();
-			_stats = Object.Instantiate(stats);
+			_stats = stats;
 			_inventory = new List<RLBaseItem>();
 		}
 		

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace RogueTemplate
 {
-	public class ItemDisplay : MonoBehaviour
+	public class ItemDisplay : ViewHolder<RLBaseItem>
 	{
 		public Image image;
 		public Text itemName;
@@ -15,7 +15,7 @@ namespace RogueTemplate
 
 		public ItemAssets ItemAssets { get; set; }
 
-		public void BindItem(RLBaseItem item)
+		public override void BindData(RLBaseItem item)
 		{
 			if (image != null)
 			{

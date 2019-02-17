@@ -55,7 +55,7 @@ public class TestEnvironment : MonoBehaviour
 				TileRenderer.BindTile(t);
 			}
 		}
-		_actor = new SimpleActor(baseStats) {
+		_actor = new SimpleActor(StatBlock.CreateInstance(baseStats, 3, 7, 9)) {
 			BasicMoveSkill = move,
 			fieldOfView = new BresenhamFOV(),
 			OnVisibilityChanged = (tile, visible) =>

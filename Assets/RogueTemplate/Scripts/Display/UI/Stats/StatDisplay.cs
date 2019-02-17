@@ -4,17 +4,12 @@ using UnityEngine;
 
 namespace RogueTemplate
 {
-	public abstract class StatDisplay : MonoBehaviour
+	public abstract class StatDisplay : ViewHolder<Stat>
 	{
-		protected Stat Stat;
-
 		public void BindStatBlock(Stat stat, StatBlock block)
 		{
-			Stat = stat;
-			block.OnStatsChanged += OnStatChanged;
-			OnStatChanged(block);
+			block.OnStatsChanged += (statBlock => BindData(stat));
+			BindData(stat);
 		}
-
-		public abstract void OnStatChanged(StatBlock block);
 	}
 }

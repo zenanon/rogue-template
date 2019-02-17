@@ -599,7 +599,7 @@ Prefab:
     - target: {fileID: 224758470416614664, guid: 88384e6555382eb44aacebcc19bf1ac5,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 256
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 224758470416614664, guid: 88384e6555382eb44aacebcc19bf1ac5,
         type: 2}
@@ -636,6 +636,17 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114131640350166840, guid: 88384e6555382eb44aacebcc19bf1ac5,
+        type: 2}
+      propertyPath: viewHolderPrefab
+      value: 
+      objectReference: {fileID: 114883528129129742, guid: 8c8e670188fb1314c97d1c831db6dac4,
+        type: 2}
+    - target: {fileID: 114131640350166840, guid: 88384e6555382eb44aacebcc19bf1ac5,
+        type: 2}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1353720970}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88384e6555382eb44aacebcc19bf1ac5, type: 2}
   m_IsPrefabAsset: 0
@@ -824,6 +835,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1353720970 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224326322239181812, guid: 88384e6555382eb44aacebcc19bf1ac5,
+    type: 2}
+  m_PrefabInternal: {fileID: 719962154}
 --- !u!1 &1478658482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a8e5450ebd5f848978fed2353cf4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statDisplayPrefab: {fileID: 114982515572382478, guid: fc72a227a7f88504b930d7de11ce73d3,
+  viewHolderPrefab: {fileID: 114982515572382478, guid: fc72a227a7f88504b930d7de11ce73d3,
     type: 2}
   container: {fileID: 2068653106}
 --- !u!114 &2068653111

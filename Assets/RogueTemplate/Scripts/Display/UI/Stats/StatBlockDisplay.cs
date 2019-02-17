@@ -6,18 +6,18 @@ namespace RogueTemplate
 {
 
 
-	public class StatBlockDisplay : MonoBehaviour
+	public class StatBlockDisplay : AdapterView<Stat, StatDisplay>
 	{
-		public StatDisplay statDisplayPrefab;
-		public RectTransform container;
-
+		private StatBlock _statBlock;
 		public void BindStatBlock(StatBlock statBlock)
 		{
-			foreach (Stat stat in statBlock.Stats)
-			{
-				StatDisplay display = Instantiate(statDisplayPrefab, container);
-				display.BindStatBlock(stat, statBlock);
-			}
+			_statBlock = statBlock;
+			BindDataList(new List<Stat>(statBlock.Stats));
+		}
+
+		public override void BindViewHolder(StatDisplay viewHolder, Stat data)
+		{
+			viewHolder.BindStatBlock(data, _statBlock);
 		}
 	}
 }

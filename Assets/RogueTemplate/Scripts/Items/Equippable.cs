@@ -8,6 +8,7 @@ namespace RogueTemplate
 	[CreateAssetMenu(fileName = "Equippable", menuName = "RogueTemplate/Items/Equippable")]
 	public class Equippable : RLItemBehaviour
 	{
+		public string equipSlot;
 		public bool isEquipped;
 		public StatMod[] statMods;
 		

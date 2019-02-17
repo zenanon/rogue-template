@@ -17,11 +17,16 @@ namespace RogueTemplate
 		{
 			if (assets != null)
 			{
-				_assetDict = new Dictionary<string, Sprite>();
-				foreach (ItemAsset asset in assets)
-				{
-					_assetDict[asset.displayName] = asset.itemSprite;
-				}
+				Initialize();
+			}
+		}
+
+		public void Initialize()
+		{
+			_assetDict = new Dictionary<string, Sprite>();
+			foreach (ItemAsset asset in assets)
+			{
+				_assetDict[asset.displayName] = asset.itemSprite;
 			}
 		}
 		
@@ -29,6 +34,10 @@ namespace RogueTemplate
 		{
 			get
 			{
+				if (_assetDict == null)
+				{
+					Initialize();
+				}
 				Sprite displayTile;
 				return _assetDict.TryGetValue(displayName, out displayTile) ? displayTile : itemNotFoundSprite;
 			}

@@ -13,15 +13,15 @@ namespace RogueTemplate
 		public Color neutralColor;
 		public Color negativeColor;
 		public Color positiveColor;
-		
-		public override void OnStatChanged(StatBlock block)
+
+		public override void BindData(Stat data)
 		{
-			int modValue = block.GetTotalModifers(Stat.Name);
-			int baseValue = block.GetBaseStatValue(Stat.Name);
+			int modValue = data.GetModifiers();
+			int baseValue = data.GetBaseValue();
 
 			string modString = modValue.ToString();
 
-			nameText.text = Stat.ShortName;
+			nameText.text = data.shortName;
 			
 			if (modValue < 0)
 			{

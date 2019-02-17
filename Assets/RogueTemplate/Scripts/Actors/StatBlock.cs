@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Boo.Lang.Environments;
 using UnityEngine;
 
 namespace RogueTemplate
@@ -7,79 +9,54 @@ namespace RogueTemplate
 	[CreateAssetMenu(fileName = "StatBlock", menuName = "RogueTemplate/Actor/Stats/StatBlock")]
 	public class StatBlock : ScriptableObject
 	{
-		public string Name;
+		public string statBlockName;
 		public delegate void OnStatsChangedDelegate(StatBlock block);
 		
 		public OnStatsChangedDelegate OnStatsChanged { get; set; }
 		
 		public Stat[] Stats;
 		private readonly Dictionary<string, Stat> _statsDict = new Dictionary<string, Stat>();
-		private readonly List<StatMod> _modifiers = new List<StatMod>();
 
-		private void Awake()
+		public static StatBlock CreateInstance(StatBlock template, params int[] values)
 		{
-			if (Application.isPlaying)
+			StatBlock instance = Instantiate(template);
+			if (values.Length != 0 && values.Length != instance.Stats.Length)
 			{
-				foreach (Stat stat in Stats)
+				throw new ArgumentException(string.Format("Initial stat values mismatch: expected {0}, found {1}",
+					instance.Stats.Length,
+					values.Length));
+			}
+
+			for (int i = 0; i < instance.Stats.Length; i++)
+			{
+				instance.Stats[i] = Instantiate(instance.Stats[i]);
+				if (i < values.Length)
 				{
-					_statsDict[stat.Name] = Instantiate(stat);
+					instance.Stats[i].SetBaseValue(values[i]);
 				}
 			}
-		}
 
-		public int GetBaseStatValue(string statName)
-		{
-			return !_statsDict.ContainsKey(statName) ? 0 : _statsDict[statName].GetValue();
-		}
-
-		public int GetTotalModifers(string statName)
-		{
-			int mods = 0;
-			float percent = 0f;
-			
-			foreach (StatMod mod in _modifiers)
+			foreach (Stat stat in instance.Stats)
 			{
-				if (mod.statName.Equals(statName))
-				{
-					mods += mod.flatAmount;
-					percent += mod.percentAmount;
-				}
+				instance._statsDict[stat.statName] = stat;
 			}
-			
-			return (int) (GetBaseStatValue(statName) * percent + mods);
-		}
 
-		public int GetStatValue(string statName)
-		{
-			return GetBaseStatValue(statName) + GetTotalModifers(statName);
+			return instance;
 		}
 
 		public void AddModifier(StatMod mod)
 		{
-			_modifiers.Add(mod);
-			NotifyStatChange();
+			if (_statsDict.ContainsKey(mod.statName))
+			{
+				_statsDict[mod.statName].AddModifier(mod);
+			}
 		}
 
 		public void RemoveModifier(StatMod mod)
 		{
-			_modifiers.Remove(mod);
-			NotifyStatChange();
-		}
-
-		public void ModifyStat(string statName, int amount)
-		{
-			if (_statsDict.ContainsKey(statName))
+			if (_statsDict.ContainsKey(mod.statName))
 			{
-				_statsDict[statName].ModifyValue(amount);
-				NotifyStatChange();
-			}
-		}
-
-		private void NotifyStatChange()
-		{
-			if (OnStatsChanged != null)
-			{
-				OnStatsChanged(this);
+				_statsDict[mod.statName].RemoveModifier(mod);
 			}
 		}
 	}

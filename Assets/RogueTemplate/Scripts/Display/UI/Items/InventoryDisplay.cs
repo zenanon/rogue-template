@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace RogueTemplate
 {
-	public class InventoryDisplay : MonoBehaviour
+	public class InventoryDisplay : AdapterView<RLBaseItem, ItemDisplay>
 	{
-		public RectTransform itemDisplayContainer;
-		public ItemDisplay itemDisplayPrefab;
 		public ItemAssets itemAssets;
 
 		private void Start()
@@ -17,23 +15,15 @@ namespace RogueTemplate
 
 		public void BindInventory(RLBaseActor actor)
 		{
-			actor.OnInventoryChanged = () => DisplayInventory(actor);
-			DisplayInventory(actor);
+			actor.OnInventoryChanged = () => BindDataList(new List<RLBaseItem>(actor.GetInventory()));
+			BindDataList(new List<RLBaseItem>(actor.GetInventory()));
 		}
 
-		private void DisplayInventory(RLBaseActor actor)
+		public override ItemDisplay CreateViewHolder()
 		{
-			for (int i = 0; i < itemDisplayContainer.childCount; i++)
-			{
-				Destroy(itemDisplayContainer.GetChild(i).gameObject);
-			}
-
-			foreach (RLBaseItem item in actor.GetInventory())
-			{
-				ItemDisplay itemDisplay = Instantiate(itemDisplayPrefab, itemDisplayContainer);
-				itemDisplay.ItemAssets = itemAssets;
-				itemDisplay.BindItem(item);
-			}
+			ItemDisplay viewHolder = base.CreateViewHolder();
+			viewHolder.ItemAssets = itemAssets;	
+			return viewHolder;
 		}
 	}
 }
